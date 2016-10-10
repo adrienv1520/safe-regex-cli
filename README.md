@@ -41,7 +41,7 @@ safe-regex-cli can be :
   `$ safe-regex file`
 
   Example :
-  `$ safe-regex src/js/app.js`)}
+  `$ safe-regex src/js/app.js`
 
 - **watch a directory or a file and get live reports**
 
