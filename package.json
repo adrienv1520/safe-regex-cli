@@ -1,0 +1,36 @@
+{
+  "name": "safe-regex-cli",
+  "version": "1.0.0",
+  "description": "The command line tool for safe-regex module to detect potentially catastrophic exponential-time regular expressions by limiting the star height to 1.",
+  "author": "Adrien Valcke <adrienvalcke@icloud.com> (https://adrienvalcke.github.io)",
+  "main": "lib/index.js",
+  "bin": {
+    "safe-regex": "bin/index.js"
+  },
+  "scripts": {
+    "test": "mocha test/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adrienvalcke/safe-regex-cli.git"
+  },
+  "dependencies": {
+    "colors": "^1.1.2",
+    "safe-regex": "^1.1.0"
+  },
+  "devDependencies": {
+    "mocha": "^3.1.0"
+  },
+  "keywords": [
+    "safe-regex-cli",
+    "safe",
+    "regex",
+    "exponential-time",
+    "regular",
+    "expressions"
+  ],
+  "preferGlobal": false,
+  "private": false,
+  "analyze": false,
+  "license": "MIT"
+}
