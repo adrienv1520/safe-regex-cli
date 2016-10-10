@@ -1,6 +1,4 @@
-# safe-regex-cli
-
-<img src="logo.png" alt="safe-regex-cli" align="right" />
+<img src="logo.png" alt="safe-regex-cli"/>
 
 The command line tool for [safe-regex](https://github.com/substack/safe-regex) module to detect potentially catastrophic exponential-time regular expressions by limiting the star height to 1.
 
