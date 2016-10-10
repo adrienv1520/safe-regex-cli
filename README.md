@@ -23,37 +23,49 @@ safe-regex-cli can be :
 ### Command line
 
 - detect an unsafe regex
+
   `$ safe-regex string`
+
   Example :
   `$ safe-regex '(a+){10}'`
 
 - get a report on each file of a directory
+
   `$ safe-regex dir`
+
   Example :
   `$ safe-regex src/js`
 
 - get a report on one file
+
   `$ safe-regex file`
+
   Example :
   `$ safe-regex src/js/app.js`)}
 
 - watch a directory or a file and get live reports
+
   `$ safe-regex dir|file -w|-watch`
+
   Examples :
+
   ```
   $ safe-regex src/js/app.js -watch
   $ safe-regex src/js -w
   ```
 
 - limit option : number of allowed repetitions in the entire regular expressions found (default 25)
+
   `$ safe-regex dir|file -limit|-l number`
+
   Example :
+
   ```
   $ safe-regex src/js/app.js -limit 50
   $ safe-regex src/js -l 35 -w
   ```
 
-- Note : the first argument must be a string (regex) or a path to a directory or a file. Other arguments can be combined with no sorting requirements.
+- Note: the first argument must be a string (regex) or a path to a directory or a file. Other arguments can be combined with no sorting requirements.
 
 ### Node module
 
