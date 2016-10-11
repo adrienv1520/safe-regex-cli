@@ -1,10 +1,16 @@
 const assert = require('assert');
+const path = require('path');
 
-const DirectoryToSafe = require('../lib/models/DirectoryToSafe');
-const FileToSafe = require('../lib/models/FileToSafe');
-const UnsafeRegex = require('../lib/models/UnsafeRegex');
+const safeReport = require('../lib');
+const safeReportSync = require('../lib').safeReportSync;
+
+const DirectoryToSafe = require('../lib/models/DirectoryToSafe.class');
+const FileToSafe = require('../lib/models/FileToSafe.class');
+const UnsafeRegex = require('../lib/models/UnsafeRegex.class');
 const FileLiner = require('../lib/models/FileLiner.class');
 const utils = require('../utils');
+
+const regexdir = path.join(__dirname, 'regex-dir');
 
 // test DirectoryToSafe
 describe('DirectoryToSafe', function(){
