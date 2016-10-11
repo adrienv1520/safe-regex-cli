@@ -10,6 +10,8 @@ The command line tool for [safe-regex](https://github.com/substack/safe-regex) m
 
 `npm install safe-regex-cli --save-dev`
 
+`npm i safe-regex-cli -D`
+
 ## How does it work ?
 
 safe-regex-cli can be :
@@ -21,6 +23,23 @@ safe-regex-cli can be :
 ## How to use it
 
 ### Command line
+
+Typically, use *safe-regex-cli* in command line when pretesting your app. If a file has unsafe regex, safe-regex exits process so scripts can be chained and a security issue will stop the chain. For an example, with npm scripts in *package.json* :
+
+```javascript
+{
+  "name": "npm-industry",
+  "version": "1.0.0",
+  "description": "npm tool for web industrialisation : builder and deployer prototype for es6 project in CI and CD",
+  "main": "index.js",
+  "author": "Adrien Valcke <a.valcke@free.fr> (https://github.com/adrienvalcke)",
+  "license": "MIT",
+  "scripts": {
+    "pretest": "eslint assets/scripts/** && safe-regex assets/scripts/",
+    "test": "mocha test/"
+  }
+}
+```
 
 - **detect an unsafe regex**
 
