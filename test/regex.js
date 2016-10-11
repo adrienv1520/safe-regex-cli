@@ -8,3 +8,5 @@ var r4 = new RegExp('hellohello');
 var r5 = new RegExp ( '(ax+ax+)+ax', 'g' );
 
 var r6 = /(aa+aa+)+mm/;
+
+var r7 = /(zz+zz+)+zz/;
