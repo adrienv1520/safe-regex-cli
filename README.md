@@ -24,7 +24,7 @@ safe-regex-cli can be :
 
 ### Command line
 
-Typically, use *safe-regex-cli* in command line when pretesting your app. If a file has unsafe regex, safe-regex exits process so scripts can be chained and a security issue will stop the chain. For an example, with npm scripts in *package.json* :
+Typically, use *safe-regex-cli* in command line when pretesting your app. If a file has unsafe regex, *safe-regex-cli* exits process so scripts can be chained and a security issue will stop the chain. For an example, with npm scripts in *package.json* :
 
 ```javascript
 {
@@ -35,11 +35,13 @@ Typically, use *safe-regex-cli* in command line when pretesting your app. If a f
   "author": "Adrien Valcke <a.valcke@free.fr> (https://github.com/adrienvalcke)",
   "license": "MIT",
   "scripts": {
-    "pretest": "eslint assets/scripts/** && safe-regex assets/scripts/",
+    "pretest": "eslint assets/scripts/** && safe-regex assets/scripts",
     "test": "mocha test/"
   }
 }
 ```
+
+There will be no mocha testing if *safe-regex-cli* find an unsafe regex in "assets/scripts" directory (process exits).
 
 - **detect an unsafe regex**
 
