@@ -5,6 +5,7 @@ const colors = require('colors/safe');
 const utils = require('../lib/utils');
 const safeReportSync = require('../lib').safeReportSync;
 const safe = require('../lib').safe;
+const safeReport = require('../lib');
 
 const help =
 `
@@ -77,6 +78,11 @@ if (!userArgs[0] || ~userArgs.indexOf('-help') || ~userArgs.indexOf('--help') ||
     else console.log(`'${dirorfile}' is ${colors.red('not safe')}.`);
   } else {
     // now we have options, operate on file(s) to get a report from unsafe regexp
-    safeReportSync(dirorfile, limit, watch);
+    let safe = safeReportSync(dirorfile, limit, watch);
+
+    // if watch, safe = true so we can wait for file changes
+    // else if safe === false safeReportSync has found unsafe regex in file(s)
+    // else safe = true safeReportSync has found no unsafe regex
+    if (!safe) process.exit(1); // STOP PROCESS so we can chain command and this security issue will stop it : safe-regex src/js/ && eslint src/js/** && ...
   }
 }
