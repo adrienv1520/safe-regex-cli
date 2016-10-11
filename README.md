@@ -69,20 +69,25 @@ safe-regex-cli can be :
 
 ### Node module
 
-Use it in your application :
+Use it in your application.
+
+#### safeReport(path[, {limit: 25, watch: false}], callback)
 
 ```javascript
 const safeReport = require('safe-regex-cli');
-// safeReport(path[, limit, watch])
-// defaults : limit = 25, watch = false
-safeReport('./src/js');
+
+safeReport('./src/js', (directory) => {
+  directory.report();
+});
+
+// or
+safeReport('./src/js', {limit: 90, watch: true}, (directory) => {
+  // ...
+});
 ```
 
 ## Contributing
 
 Any advices or help will be greatly welcome. Feel free to contribute and make PR.
 
-Here's some work that is still not finished :
-
-  - Test application
-  - Add support to '\*.ext' path in DirectoryToSafe(dirorfile) function
+Please look at [TODO.md](./TODO.md) for work to be continued.
