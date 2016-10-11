@@ -24,7 +24,7 @@ safe-regex-cli can be :
 
 ### Command line
 
-Typically, use *safe-regex-cli* in command line when pretesting your app. If a file has unsafe regex, *safe-regex-cli* exits process so scripts can be chained and a security issue will stop the chain. For an example, with npm scripts in *package.json* :
+Typically, use *safe-regex-cli* in command line when pretesting your app. If a file has unsafe regex, *safe-regex-cli* exits process so scripts/commands can be chained and a regex security issue will stop the chain. For an example, with npm scripts in *package.json* :
 
 ```javascript
 {
@@ -48,6 +48,7 @@ There will be no mocha testing if *safe-regex-cli* find an unsafe regex in "asse
   `$ safe-regex string`
 
   Example :
+
   `$ safe-regex '(a+){10}'`
 
 - **get a report on each file of a directory**
@@ -55,6 +56,7 @@ There will be no mocha testing if *safe-regex-cli* find an unsafe regex in "asse
   `$ safe-regex dir`
 
   Example :
+
   `$ safe-regex src/js`
 
 - **get a report on one file**
@@ -62,9 +64,30 @@ There will be no mocha testing if *safe-regex-cli* find an unsafe regex in "asse
   `$ safe-regex file`
 
   Example :
+
   `$ safe-regex src/js/app.js`
 
-- **watch a directory or a file and get live reports**
+- **recursive option : indicates whether all subdirectories should be tested or watched, or only the current (default false)**
+
+  `$ safe-regex dir|file -recursive|-r`
+
+  Examples :
+
+  ```
+  $ safe-regex src/js -recursive
+  $ safe-regex src/js -r -l 50 -w
+  ```
+- **limit option : number of allowed repetitions in the entire regular expressions found (default 25)**
+
+  `$ safe-regex dir|file -limit|-l number`
+
+  Examples :
+
+  ```
+  $ safe-regex src/js/app.js -limit 50
+  $ safe-regex src/js -l 35 -w
+  ```
+- **watch option: watch a directory or a file and get live reports (default false)**
 
   `$ safe-regex dir|file -w|-watch`
 
@@ -75,16 +98,10 @@ There will be no mocha testing if *safe-regex-cli* find an unsafe regex in "asse
   $ safe-regex src/js -w
   ```
 
-- **limit option : number of allowed repetitions in the entire regular expressions found (default 25)**
+- **help**
 
-  `$ safe-regex dir|file -limit|-l number`
+  `$ safe-regex --help|-help|-h`
 
-  Example :
-
-  ```
-  $ safe-regex src/js/app.js -limit 50
-  $ safe-regex src/js -l 35 -w
-  ```
 
 - **Note**: the first argument must be a string (regex) or a path to a directory or a file. Other arguments can be combined with no sorting requirements.
 
@@ -92,7 +109,7 @@ There will be no mocha testing if *safe-regex-cli* find an unsafe regex in "asse
 
 Use it in your application.
 
-#### safeReport(path[, {limit: 25, watch: false}], callback)
+#### safeReport(path[, {recursive: false, limit: 25, watch: false}], callback)
 
 ```javascript
 const safeReport = require('safe-regex-cli');
@@ -102,7 +119,7 @@ safeReport('./src/js', (directory) => {
 });
 
 // or
-safeReport('./src/js', {limit: 90, watch: true}, (directory) => {
+safeReport('./src/js', {recursive: true, limit: 90, watch: true}, (directory) => {
   // ...
 });
 ```
