@@ -67,7 +67,7 @@ There will be no mocha testing if *safe-regex-cli* find an unsafe regex in "asse
 
   `$ safe-regex src/js/app.js`
 
-- **recursive option : indicates whether all subdirectories should be tested or watched, or only the current (default false)**
+- **recursive option : indicates whether all subdirectories should be tested or watched, or only the current directory (default false)**
 
   `$ safe-regex dir|file -recursive|-r`
 
