@@ -39,12 +39,19 @@ ${colors.gray(`examples:
   safe-regex src/js/app.js -watch
   safe-regex src/js/app.js -w`)}
 
-- OPTION : number of allowed repetitions in the entire regular expressions found (default 25)
+- OPTION LIMIT : number of allowed repetitions in the entire regular expressions found (default 25)
 
 $ safe-regex dir|file -limit|-l number
 ${colors.gray(`examples:
   safe-regex src/js/app.js -limit 50
   safe-regex src/js/app.js -l 35 -w`)}
+
+- OPTION RECURSIVE : indicates whether all subdirectories should be tested or watched, or only the current directory (false by default)
+
+$ safe-regex dir|file -recursive|-r
+${colors.gray(`examples:
+  safe-regex src/js/ -recursive
+  safe-regex src/js/ -r -l 50 -w`)}
 
 ${colors.bgWhite.gray('--------------------------------------------- END HELP ---------------------------------------------')}
 `;
@@ -56,10 +63,16 @@ if (!userArgs[0] || ~userArgs.indexOf('-help') || ~userArgs.indexOf('--help') ||
 } else {
   let dirorfile = userArgs[0],
       limit = 25,
-      watch = false;
+      watch = false,
+      recursive = false;
 
   // get options
   let index = 0;
+
+  // recursive
+  if (~userArgs.indexOf('-recursive') || ~userArgs.indexOf('-r')){
+    recursive = true;
+  }
 
   // limit
   if (~(index = userArgs.indexOf('-limit')) || ~(index = userArgs.indexOf('-l'))){
@@ -78,11 +91,11 @@ if (!userArgs[0] || ~userArgs.indexOf('-help') || ~userArgs.indexOf('--help') ||
     else console.log(`'${dirorfile}' is ${colors.red('not safe')}.`);
   } else {
     // now we have options, operate on file(s) to get a report from unsafe regexp
-    let safe = safeReportSync(dirorfile, limit, watch);
+    let safe = safeReportSync(dirorfile, recursive, limit, watch);
 
-    // if watch, safe = true so we can wait for file changes
-    // else if safe === false safeReportSync has found unsafe regex in file(s)
-    // else safe = true safeReportSync has found no unsafe regex
-    if (!safe) process.exit(1); // STOP PROCESS so we can chain command and this security issue will stop it : safe-regex src/js/ && eslint src/js/** && ...
+    /* if watch, safe = true so we can wait for file changes
+       else if safe === false safeReportSync has found unsafe regex in file(s)
+       else safe = true safeReportSync has found no unsafe regex */
+    if (!safe) process.exit(1); // STOP PROCESS so we can chain command and a regex security issue will stop it : safe-regex src/js/ && eslint src/js/** && ...
   }
 }
