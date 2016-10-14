@@ -12,9 +12,6 @@ const colors = require('colors/safe');
 
 const [,, regexorpath, ...args] = [...process.argv];
 
-console.log('args = ' + args + ' length = ' + args.length + ' type of = ' + Object.prototype.isPrototypeOf.call(Array.prototype, args));
-console.log('regex or path = ' + regexorpath);
-
 if (!regexorpath || regexorpath === '-help' || regexorpath === '-h' || ~args.indexOf('-help') || ~args.indexOf('-h')) {
   console.log(help);
 } else {
