@@ -1,10 +1,10 @@
 <img src="logo.png" alt="safe-regex-cli"/>
 
-The command line tool for [safe-regex](https://github.com/substack/safe-regex) module to detect potentially catastrophic exponential-time regular expressions by limiting the star height to 1.
+The command line tool for the [safe-regex](https://github.com/substack/safe-regex) module to detect potentially catastrophic exponential-time regular expressions by limiting the star height to 1. Use *safe-regex-cli* to ensure your regular expressions are not susceptible of regular expression denial of service (ReDOS) attacks.
 
-- Test regex in cli,
-- get a report on unsafe file or unsafe directory of files,
-- watch a file or a directory of files for unsafe regex.
+- Test a simple regex in cli,
+- get a report on a file or a directory of files,
+- watch a file or a directory of files for unsafe regex live.
 
 ## Installation
 
