@@ -100,7 +100,7 @@ There will be no mocha testing if *safe-regex-cli* find an unsafe regex in "asse
 
 - **help**
 
-  `$ safe-regex --help|-help|-h`
+  `$ safe-regex -help|-h`
 
 
 - **Note**: the first argument must be a string (regex) or a path to a directory or a file. Other arguments can be combined with no sorting requirements.
