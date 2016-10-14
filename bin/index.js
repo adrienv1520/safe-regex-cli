@@ -2,11 +2,11 @@
 // sudo npm link
 
 const help = require('./help');
+const defaults = require('../lib/defaults');
 
 const utils = require('../lib/utils');
 const safeReportSync = require('../lib').safeReportSync;
 const safe = require('../lib').safe;
-const safeReport = require('../lib');
 
 const colors = require('colors/safe');
 
@@ -15,9 +15,9 @@ const [,, regexorpath, ...args] = [...process.argv];
 if (!regexorpath || regexorpath === '-help' || regexorpath === '-h' || ~args.indexOf('-help') || ~args.indexOf('-h')) {
   console.log(help);
 } else {
-  let limit = 25,
-      watch = false,
-      recursive = false;
+  let recursive = defaults.recursive,
+      limit = defaults.limit,
+      watch = defaults.watch;
 
   // get options in args
 
@@ -45,7 +45,7 @@ if (!regexorpath || regexorpath === '-help' || regexorpath === '-h' || ~args.ind
     else console.log(`'${regexorpath}' is ${colors.red('not safe')}.`);
   } else {
     // now we have options, operate on file(s) to get a report from unsafe regexp
-    const safe = safeReportSync(regexorpath, recursive, limit, watch);
+    const safe = safeReportSync({recursive, limit, watch, dirorfile: regexorpath});
 
     /* if watch, safe = true so we can wait for file changes
        else if safe === false safeReportSync has found unsafe regex in file(s)
