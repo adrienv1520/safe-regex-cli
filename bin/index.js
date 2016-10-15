@@ -2,11 +2,10 @@
 // sudo npm link
 
 const help = require('./help');
-const defaults = require('../lib/defaults');
-
-const utils = require('../lib/utils');
 const safeReportSync = require('../lib').safeReportSync;
 const safe = require('../lib').safe;
+const utils = require('../lib/utils');
+const defaults = require('../lib/defaults');
 
 const colors = require('colors/safe');
 
