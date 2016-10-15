@@ -1,6 +1,6 @@
 {
   "name": "safe-regex-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "The command line tool for safe-regex module to detect potentially catastrophic exponential-time regular expressions by limiting the star height to 1.",
   "author": "Adrien Valcke <adrienvalcke@icloud.com> (https://adrienvalcke.github.io)",
   "main": "lib/index.js",
