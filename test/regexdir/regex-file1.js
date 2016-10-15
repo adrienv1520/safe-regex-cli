@@ -7,3 +7,5 @@ var regexp = new RegExp('\\nabc', 'gimy');
 var reg = new RegExp('hellohello');
 
 var re = /(bb+bb+)+cc/;
+
+var re = /(g+v+)+m/;
