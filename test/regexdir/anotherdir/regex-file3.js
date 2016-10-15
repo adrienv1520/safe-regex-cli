@@ -1,7 +1,9 @@
 console.log('regex-file3.js');
 
-var regexp = new RegExp('\\nabc', 'gimy');
-var reg = new RegExp('hellohello');
+var r1 = new RegExp('\\nabc', 'gimy');
+var r2 = new RegExp('hellohello');
 
-var re = /(bb+bb+)+cc/;
-var re = /(hello+how are+)+you/;
+var r3 = /(bb+bb+)+cc/;
+var r4 = /(hello+how are+)+you/;
+
+var r5 = new RegExp ( '(ax+ax+)+ax');
